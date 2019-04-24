@@ -4,12 +4,6 @@
 #include "mruby_wrapper.h"
 #include "mruby.h"
 
-static mrb_value surreal_method_test(mrb_state *mrb, mrb_value self)
-{
-  puts("Extension");
-  return self;
-}
-
 static mrb_value surreal_method_exec(mrb_state *mrb, mrb_value self)
 {
   char *target = NULL;
@@ -54,7 +48,6 @@ static mrb_value surreal_method_slurp(mrb_state *mrb, mrb_value self) {
 void initialize_surreal_mrb_hooks(mrb_state *mrb) {
   struct RClass *mrb_surreal_class = mrb_define_module(mrb, "Surreal");
 
-  mrb_define_class_method(mrb, mrb_surreal_class, "test", surreal_method_test, MRB_ARGS_NONE());
   mrb_define_class_method(mrb, mrb_surreal_class, "exec", surreal_method_exec, MRB_ARGS_REQ(1));
   mrb_define_class_method(mrb, mrb_surreal_class, "slurp", surreal_method_slurp, MRB_ARGS_REQ(1));
 }

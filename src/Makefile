@@ -1,7 +1,10 @@
-CFLAGS 		 = -I../mruby/include -I.
-EXTRA_LIBS = ../mruby/build/host/lib/libmruby.a
+CFLAGS 		 =  -Werror -Wall -I../mruby/include $(shell pkg-config gtk+-3.0 --cflags --static)
+STATIC_LIB = ../mruby/build/host/lib/libmruby.a
 TARGETS 	 = $(patsubst %.c,%.o,$(wildcard *.c))
 
 all: $(TARGETS)
 	mkdir -p ../build
-	$(CC) $(CFLAGS) $(TARGETS) $(EXTRA_LIBS) -o ../build/surreal
+	$(CC) $(CFLAGS) $(TARGETS) $(STATIC_LIB) -o ../build/surreal $(shell pkg-config gtk+-3.0 --libs --static)
+
+clean:
+	- rm $(TARGETS)

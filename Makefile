@@ -1,6 +1,9 @@
 surreal:
 	cd src && make
 
+clean:
+	cd src && make clean
+
 mruby_build:
 	cd mruby && make
 
