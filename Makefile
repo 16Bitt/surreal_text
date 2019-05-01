@@ -1,4 +1,4 @@
-surreal:
+surreal: mruby_build
 	cd src && make
 
 clean:
@@ -9,3 +9,6 @@ mruby_build:
 
 mruby_test:
 	cd mruby && make test
+
+run: surreal
+	build/surreal

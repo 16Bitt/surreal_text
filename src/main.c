@@ -8,7 +8,8 @@ int main(int argc, char **argv) {
   // surreal_mruby_close(session);
 
   surreal_global_init_ui(&argc, &argv);
-  surreal_open_window();
+  surreal_ui_t *ui = surreal_open_window();
+  surreal_create_editor(ui);
   surreal_ui_wait();
 
   return 0;
